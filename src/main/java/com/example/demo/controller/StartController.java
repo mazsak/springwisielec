@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.Service.IStatsService;
 import com.example.demo.Service.IUserService;
 import com.example.demo.Service.IWordService;
+import com.example.demo.models.Stats;
 import com.example.demo.models.User;
 import com.example.demo.models.Word;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -24,6 +27,9 @@ public class StartController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IStatsService statsService;
 
     @Autowired
     private IWordService iWordService;
@@ -137,6 +143,24 @@ public class StartController {
         model.addAttribute("score", score);
 
         return "game";
+    }
+
+    @GetMapping("/scoreboard")
+    public String scoreboard(Model model){
+        Comparator<Stats> compareByScore = Comparator.comparing(Stats::getScore);
+        List scores = statsService.findAll();
+        scores.sort(compareByScore.reversed());
+        model.addAttribute("scores", scores);
+        return "scoreboard";
+    }
+
+    @GetMapping("/stats")
+    public String stats(Model model){
+        Comparator<Word> compareByWord = Comparator.comparing(Word::getWord);
+        List stats = iWordService.findAll();
+        stats.sort(compareByWord.reversed());
+        model.addAttribute("stats", stats);
+        return "stats";
     }
 
 }
