@@ -9,6 +9,10 @@
     <table>
         <form action="#" th:action="@{/}" th:object="${user}" method="post">
             <tr>
+                <h2 style="text-align: center;">Login</h2>
+            </tr>
+            <tr></tr>
+            <tr>
                 <td>Name:</td>
                 <td><input type="text" th:field="*{name}"/></td>
                 <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
@@ -21,7 +25,7 @@
             <tr></tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Register"/></td>
+                <td><input type="submit" value="Login"/></td>
             </tr>
         </form>
     </table>
