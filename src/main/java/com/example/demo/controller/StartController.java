@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,13 @@ public class StartController {
 
     @PostMapping("/register")
     public String register(Model model) {
-        //model.addAttribute("user", new User())
+        model.addAttribute("user", new User());
         return "register";
+    }
+
+    @PostMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("user", new User());
+        return "login";
     }
 }
