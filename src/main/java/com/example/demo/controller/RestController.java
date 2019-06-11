@@ -6,9 +6,7 @@ import com.example.demo.Service.IWordService;
 import com.example.demo.models.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,13 @@ public class RestController {
         return iWordService.findAll();
     }
 
+    @PostMapping(value = "/word", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody
+    List<Word> addWord(@ModelAttribute Word word) {
+        iWordService.add(word);
+        return iWordService.findAll();
+    }
 
 }
+

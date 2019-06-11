@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.Service.IUserService;
 import com.example.demo.Service.UserService;
 import com.example.demo.models.User;
+import com.example.demo.models.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,4 +62,11 @@ public class StartController{
 
         return "login";
     }
+
+    @GetMapping("/addword")
+    public String addword(Model model){
+        model.addAttribute("word", new Word());
+        return "addword";
+    }
+
 }
