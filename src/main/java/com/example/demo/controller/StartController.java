@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -113,13 +114,15 @@ public class StartController {
     }
 
     @GetMapping("/gameloop")
-    public String gameloop(@Value("letter") String letter, Model model) {
+    public String gameloop(@RequestParam("letter") String letter, Model model) {
 
         boolean isLetter = false;
 
         for (int i = 0; i < word.length(); i++) {
+            System.out.println("dupa1  " + letter.charAt(0) + " " + word);
             if (word.charAt(i) == letter.charAt(0)) {
                 dashs.set(i, String.valueOf(letter.charAt(0)));
+
                 isLetter = true;
             }
         }
