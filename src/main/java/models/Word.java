@@ -12,6 +12,12 @@ public class Word {
 
     private String word;
     private String language;
+    private int showNumber;
+    private int passNumber;
+    private int failNumber;
+
+    public Word() {
+    }
 
     public Word(String word, String language) {
         this.word = word;
@@ -40,5 +46,29 @@ public class Word {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public int getShowNumber() {
+        return showNumber;
+    }
+
+    public void setShowNumber(int showNumber) {
+        this.showNumber = showNumber;
+    }
+
+    public int getPassNumber() {
+        return passNumber;
+    }
+
+    public void setPassNumber(int passNumber) {
+        this.passNumber = passNumber;
+    }
+
+    public int getFailNumber() {
+        return failNumber;
+    }
+
+    public void setFailNumber(int failNumber) {
+        this.failNumber = failNumber;
     }
 }
