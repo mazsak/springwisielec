@@ -9,18 +9,29 @@
 <table>
     <form action="#" th:action="@{/}" th:object="${user}" method="post">
         <tr>
+            <h2>Register</h2>
+        </tr>
+        <tr></tr>
+        <tr>
             <td>Name:</td>
+        </tr>
+        <tr>
             <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
         </tr>
         <tr>
             <td>Password:</td>
+        </tr>
+        <tr>
             <td><input type="password" th:field="*{password}"/></td>
+        </tr>
+        <tr>
             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
         </tr>
         <tr></tr>
         <tr>
-            <td></td>
             <td><input type="submit" value="Register"/></td>
         </tr>
     </form>
