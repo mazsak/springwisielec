@@ -30,8 +30,13 @@ public class StartController{
             model.addAttribute("user", user);
             return "/login";
         }
-        userService.add(user);
-        return "language";
+        User userDatabase = userService.findUserByName(user.getName());
+        if(userDatabase!=null){
+            if(userDatabase.getPassword().equals(user.getPassword())){
+                return "language";
+            }
+        }
+        return "login";
     }
 
     @GetMapping("/register")
@@ -40,9 +45,20 @@ public class StartController{
         return "register";
     }
 
-    @PostMapping("/login")
-    public String login(Model model) {
+    @GetMapping("/login")
+    public String loginGet(Model model){
         model.addAttribute("user", new User());
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()){
+            model.addAttribute("user", user);
+            return "/register";
+        }
+        userService.add(user);
+
         return "login";
     }
 }
