@@ -5,25 +5,31 @@
     <title>Register</title>
 </head>
 <body>
-<table>
-    <form action="#" th:action="@{/}" th:object="${user}" method="post">
+<div style="position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; width: 205px; height: 180px; background-color: #f2f2f2;">
+    <table>
         <tr>
-            <td>Name:</td>
-            <td><input type="text" th:field="*{name}"/></td>
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            <td>
+                <h2 style="text-align: center;">Register</h2>
+            </td>
         </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" th:field="*{password}"/></td>
-            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
-        </tr>
-        <tr></tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Register"/></td>
-        </tr>
-    </form>
-</table>
-
+        <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}"/></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" th:field="*{password}"/></td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Register"/></td>
+            </tr>
+        </form>
+    </table>
+</div>
 </body>
 </html>
