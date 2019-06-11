@@ -10,4 +10,9 @@ public class StartController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/language")
+    public String language() {
+        return "language";
+    }
 }
