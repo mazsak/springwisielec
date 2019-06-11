@@ -6,8 +6,18 @@
 </head>
 <body>
 <div style="position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; width: 500px; height: 600px; background-color: #f2f2f2;">
-    <form method="post" action="load">
+    <form method="get" action="/gameloop">
         <table>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <h3>Score:</h3>
+                    <span th:text="${score}"></span>
+                </td>
+            </tr>
+            <tr></tr>
             <tr>
                 <td th:each="dash: ${dashs}">
                     <span th:text="${dash}"></span>

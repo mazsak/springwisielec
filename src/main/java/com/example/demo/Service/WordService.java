@@ -28,4 +28,9 @@ public class WordService implements IWordService {
         return (List<Word>) iWordRepo.findAll();
     }
 
+    @Override
+    public List<Word> findByLanguage(String lang) {
+        return iWordRepo.findByLanguage(lang);
+    }
+
 }

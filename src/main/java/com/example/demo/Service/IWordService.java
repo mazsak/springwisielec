@@ -7,4 +7,6 @@ import java.util.List;
 public interface IWordService {
     boolean add(Word student);
     List<Word> findAll();
+
+    List<Word> findByLanguage(String lang);
 }
