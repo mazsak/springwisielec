@@ -5,6 +5,7 @@ import com.example.demo.Service.IWordRepo;
 import com.example.demo.Service.IWordService;
 import com.example.demo.models.Word;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,15 +20,16 @@ public class RestController {
     @GetMapping(value = "/word", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<Word> getWords() {
-        return iWordService.findAll();
-    }
+    List<Word> addWord(@RequestParam (required = false) String word, @RequestParam (required = false) String language) {
 
-    @PostMapping(value = "/word", produces = "application/json")
-    @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody
-    List<Word> addWord(@ModelAttribute Word word) {
-        iWordService.add(word);
+        if(word != null && language != null){
+            if(language.equals("eng"))
+                language = "English";
+            else
+                language = "Polish";
+        iWordService.add(new Word(word, language));
+        }
+
         return iWordService.findAll();
     }
 

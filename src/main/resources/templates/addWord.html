@@ -7,7 +7,7 @@
 <body>
 <div style="position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; width: 205px; height: 180px; background-color: #f2f2f2;">
     <table>
-        <form action="#" th:action="@{/addword}" th:object="${word}" method="post">
+        <form action="#" th:action="@{/word}" th:object="${word}" method="get">
             <tr>
                 <h2 style="text-align: center;">Add word</h2>
             </tr>
@@ -17,7 +17,15 @@
                 <td><input type="text" th:field="*{word}"/></td>
                 <td th:if="${#fields.hasErrors('word')}" th:errors="*{word}">Name Error</td>
             </tr>
-
+            <tr>
+                <td>Language:</td>
+                <td>
+                    <select th:field="*{language}" style="width:200px;">
+                        <option value="pol">Polish</option>
+                        <option value="eng">English</option>
+                    </select>
+                </td>
+            </tr>
             <tr>
                 <td></td>
                 <td><input type="submit" value="Add"/></td>
